@@ -1,0 +1,15 @@
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  sha: v1.2.3
+  hooks:
+  - id: trailing-whitespace
+  - id: autopep8-wrapper
+
+- repo: https://github.com/Lucas-C/pre-commit-hooks
+  sha: v1.1.5
+  hooks:
+  - id: forbid-tabs
+
+- repo: https://github.com/kintoandar/pre-commit.git
+  sha: v2.1.0
+  hooks:
+  - id: terraform_fmt
