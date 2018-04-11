@@ -44,12 +44,12 @@ def disable_users(users):
                 try:
                     iam.delete_login_profile(UserName=user)
                 except Exception, e:
-                    print('Skipping User {} has no login profile'.format(user))
+                    print 'Skipping User ' + user + ' has no login profile'
 
                 try:
                     access_keys = iam.list_access_keys(UserName=user)
                 except Exception, e:
-                    print('Skipping. User {} has no access key'.format(user))
+                    print 'Skipping. User ' + user + ' has no access key'
 
                 if 'AccessKeyMetadata' in access_keys:
                     for key in access_keys['AccessKeyMetadata']:
@@ -77,18 +77,22 @@ def lambda_handler(event, context):
     suffix_list = os.environ['IGNORE_IAM_USER_SUFFIX'].split(
         ',') if 'IGNORE_IAM_USER_SUFFIX' in os.environ else []
 
+    def is_user_ignored(prefix_list, suffix_list, name):
+        for prefix in prefix_list:
+            if name.startswith(prefix):
+                return True
+        for prefix in suffix_list:
+            if name.endswith(prefix):
+                return True
+        return False
+
     for user in users['Users']:
         print('Processing ' + user['UserName'])
         mfa = iam.list_mfa_devices(UserName=user['UserName'])
 
-        if not mfa['MFADevices']:
+        if not mfa['MFADevices'] and not is_user_ignored(prefix_list, suffix_list, user['UserName']):
             non_mfa_users.append(user['UserName'])
-            for ignore_prefix in prefix_list:
-                if user['UserName'].startswith(ignore_prefix):
-                    non_mfa_users.remove(user['UserName'])
-            for ignore_suffix in suffix_list:
-                if user['UserName'].endswith(ignore_suffix):
-                    non_mfa_users.remove(user['UserName'])
+
     print "The following users do not have MFA set up, so should be removed."
     print non_mfa_users
     disable_users(non_mfa_users)
