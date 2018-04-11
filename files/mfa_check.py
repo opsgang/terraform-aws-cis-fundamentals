@@ -89,7 +89,7 @@ def lambda_handler(event, context):
             for ignore_suffix in suffix_list:
                 if user['UserName'].endswith(ignore_suffix):
                     non_mfa_users.remove(user['UserName'])
-    print "Following users need to removed due to they don't have MFA setup"
+    print "The following users do not have MFA set up, so should be removed."
     print non_mfa_users
     disable_users(non_mfa_users)
 
