@@ -1,0 +1,7 @@
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+.terraform/
+*.output
+*.plan
+*.tfplan
