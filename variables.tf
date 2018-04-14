@@ -33,6 +33,11 @@ variable "lambda_mfa_checker_user_suffix" {
   default     = ""
 }
 
+variable "lambda_user_inactivity_limit" {
+  description = "Disable inactive users more than N days"
+  default     = 90
+}
+
 variable "lambda_cron_schedule" {
   description = "Default Cron schedule for lambda helpers"
   default     = "cron(0 6 * * ? *)"
