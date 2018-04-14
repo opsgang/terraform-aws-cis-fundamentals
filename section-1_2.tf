@@ -1,8 +1,3 @@
-# every lambda function uses this assume role policy
-data "template_file" "iam_lambda_assume_role_policy" {
-  template = "${file("${path.module}/templates/iam_lambda_assume_role_policy.json.tpl")}"
-}
-
 # MFA check and disable function
 ## IAM Policy
 data "template_file" "mfa_check_policy" {
