@@ -38,6 +38,16 @@ variable "lambda_user_inactivity_limit" {
   default     = 90
 }
 
+variable "lambda_access_key_age_max" {
+  description = "Expire access keys after N days"
+  default     = 90
+}
+
+variable "lambda_access_key_age_notify" {
+  description = "Start to send notifications for expiring keys N before"
+  default     = 7
+}
+
 variable "lambda_cron_schedule" {
   description = "Default Cron schedule for lambda helpers"
   default     = "cron(0 6 * * ? *)"
