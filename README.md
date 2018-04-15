@@ -21,9 +21,10 @@ This Terraform module helps to setup an AWS account with the requirements of  CI
     16. Ensure IAM policies are attached only to groups or roles (Scored)
     17. Enable detailed billing (Scored) **[Manual intervention 1](#action-1)**
     18. *TODO*: Ensure IAM Master and IAM Manager roles are active (Scored).
+    19. Maintain current contact details (Scored) **Cannot be codified** **[Manual intervention 2](#action-2)**
 
 
-List of manual interventions
+# List of manual interventions
 ##### Action 1
 AWS API does not support to set up billing reports and the section 1.17 only creates the necessary bucket. The rest should be taken care of manually.
 
@@ -33,3 +34,7 @@ After applying Terraform, a privileged user needs to take following actions
 3. Type the name of the bucket you've created in section 1.17 into the textbox.
 4. Click **Verify**
 5. Click **Save preferences**
+
+##### Action 2
+AWS API does not support this action, so needs to be completed manually by the root user.
+To find out what needs to be done, please visit https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/manage-account-payment.html#contact-info
