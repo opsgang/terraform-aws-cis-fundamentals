@@ -22,6 +22,7 @@ This Terraform module helps to setup an AWS account with the requirements of  CI
     17. Enable detailed billing (Scored) **[Manual intervention 1](#action-1)**
     18. *TODO*: Ensure IAM Master and IAM Manager roles are active (Scored).
     19. Maintain current contact details (Scored) **Cannot be codified** **[Manual intervention 2](#action-2)**
+    20. Ensure security contact information is registered (Scored) **Cannot be codified** **[Manual intervention 2](#action-2)**
 
 
 # List of manual interventions
