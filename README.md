@@ -14,3 +14,6 @@ This Terraform module helps to setup an AWS account with the requirements of  CI
     9. Ensure IAM password policy requires minimum length of 14 or greater (Scored)
     10. Ensure IAM password policy prevents password reuse (Scored)
     11. Ensure IAM password policy expires passwords within 90 days or less (Scored)
+    12. Ensure no root account access key exists (Scored)
+    13. Ensure MFA is enabled for the "root" account (Scored)
+    14. *TODO*: Ensure hardware MFA is enabled for the "root" account (Scored)
