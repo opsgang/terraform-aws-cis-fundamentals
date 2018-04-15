@@ -102,3 +102,13 @@ variable "iam_hard_expiry" {
   description = "Everyone needs hard reset for expired passwords"
   default     = true
 }
+
+variable "billing_s3_bucket_name" {
+  description = "S3 bucket name for billing logs"
+  default     = ""
+}
+
+variable "billing_s3_bucket_policy" {
+  description = "Custom S3 bucket policy for billing logs. The default policy will be used if not defined"
+  default     = ""
+}
