@@ -19,3 +19,16 @@ This Terraform module helps to setup an AWS account with the requirements of  CI
     14. *TODO*: Ensure hardware MFA is enabled for the "root" account (Scored)
     15. *Ensure security questions are registered in the AWS account (Not Scored)* **Cannot be codified**
     16. Ensure IAM policies are attached only to groups or roles (Scored)
+    17. Enable detailed billing (Scored) **[Manual intervention 1](#action-1)**
+
+
+List of manual interventions
+##### Action 1
+AWS API does not support to set up billing reports and the section 1.17 only creates the necessary bucket. The rest should be taken care of manually.
+
+After applying Terraform, a privileged user needs to take following actions
+1. Open https://console.aws.amazon.com/billing/home?#/preference
+2. Enable **Receive Billing Reports**
+3. Type the name of the bucket you've created in section 1.17 into the textbox.
+4. Click **Verify**
+5. Click **Save preferences**
