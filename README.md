@@ -24,6 +24,7 @@ This Terraform module helps to setup an AWS account with the requirements of  CI
     19. Maintain current contact details (Scored) **Cannot be codified** **[Manual intervention 2](#action-2)**
     20. Ensure security contact information is registered (Scored) **Cannot be codified** **[Manual intervention 2](#action-2)**
     21. Ensure IAM instance roles are used for AWS resource access from instances (Not Scored)
+    22. Ensure a support role has been created to manage incidents with AWS Support (Scored)
 
 
 # List of manual interventions
