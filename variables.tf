@@ -112,3 +112,19 @@ variable "billing_s3_bucket_policy" {
   description = "Custom S3 bucket policy for billing logs. The default policy will be used if not defined"
   default     = ""
 }
+
+# The default policy will be used if this left empty
+variable "cloudtrail_kms_policy" {
+  description = "KMS policy for Cloudtrail logs."
+  default     = ""
+}
+
+# "ReadOnly", "WriteOnly", "All".
+variable "clodtrail_event_selector_type" {
+  description = "Log type for event selectors"
+  default     = "All"
+}
+
+variable "cloudtrail_s3_bucket_name" {
+  description = "S3 bucket name for CloudTrail logs"
+}
