@@ -14,8 +14,7 @@ resource "aws_kms_key" "cloudtrail" {
   is_enabled              = true
   enable_key_rotation     = true
 
-  #policy = "${var.cloudtrail_kms_policy != "" ? "${var.cloudtrail_kms_policy}" : "${data.template_file.cloudtrail_kms.rendered}"}"
-  policy = "${data.template_file.cloudtrail_kms.rendered}"
+  policy = "${var.cloudtrail_kms_policy != "" ? "${var.cloudtrail_kms_policy}" : "${data.template_file.cloudtrail_kms.rendered}"}"
 
   tags = "${var.tags}"
 }
