@@ -27,6 +27,7 @@ This Terraform module helps to setup an AWS account with the requirements of  CI
     22. Ensure a support role has been created to manage incidents with AWS Support (Scored)
 2. Logging
     1. Ensure CloudTrail is enabled in all regions (Scored)
+    2. Ensure CloudTrail log file validation is enabled (Scored)
 
 
 # List of manual interventions
