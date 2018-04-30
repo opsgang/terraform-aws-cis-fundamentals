@@ -10,6 +10,26 @@ def answer_yes(x): return True if str(x).lower() in [
     '1', 'yes', 'true'] else False
 
 
+def send_notifications(message):
+    # TODO
+    return True
+
+
+def is_bucket_not_public(bucket_name):
+    s3 = boto3.client('s3')
+    bucket_acl = s3.get_bucket_acl(Bucket=bucket_name)
+
+    # If there is a permission attached with any value for AllUsers,
+    # it means the bucket is public
+    # We don't need to check if the permission any of
+    # READ|WRITE|READ_ACP|WRITE_ACP|FULL_CONTROL
+    for grantee in bucket_acl['Grants']:
+        if grantee['Grantee']['Type'] == 'Group' \
+                and grantee['Grantee']['URI'] == 'http://acs.amazonaws.com/groups/global/AllUsers':
+            return False
+    return True
+
+
 def lambda_handler(event, context):
     rc = 1
     message_body = 'Chekcing trails'
@@ -35,6 +55,13 @@ def lambda_handler(event, context):
         else:
             notification = trail['Name'] + \
                 ' does not match with the requirements'
+            print notification
+            message_body += notification + "\n"
+
+        if not is_bucket_not_public(trail['S3BucketName']):
+            rc = 1
+            notification = trail['Name'] + \
+                "\'s bucket has public access."
             print notification
             message_body += notification + "\n"
 

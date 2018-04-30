@@ -28,6 +28,7 @@ This Terraform module helps to setup an AWS account with the requirements of  CI
 2. Logging
     1. Ensure CloudTrail is enabled in all regions (Scored)
     2. Ensure CloudTrail log file validation is enabled (Scored)
+    3. Ensure the S3 bucket CloudTrail logs to is not publicly accessible (Scored)
 
 
 # List of manual interventions
